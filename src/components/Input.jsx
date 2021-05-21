@@ -1,6 +1,20 @@
-import React from 'react'; 
+import React from 'react';
+import districtList from './districtList.js';
 
 class Input extends React.Component {
+
+    componentDidMount() {
+        // 1. populate districts select box using districtList data
+        function populateDistricts() {
+            let districts = '';
+            districtList.forEach(district => {
+                districts += '<option value=' + district.district_id + '>' + district.district_name + '</option>';
+            });
+            document.querySelector('#district-select').innerHTML = districts;
+        }
+        populateDistricts();
+    }
+
     render() {
         return (
             <section id='input-section'>
