@@ -1,7 +1,7 @@
 import VaccineSession from './VaccineSession'
 
 function VaccineSlotsFound(props) {
-    if (props['vaccineSlotAPIResponse'] == undefined || props['vaccineSlotAPIResponse'] == null || props['vaccineSlotAPIResponse']['centers'].length == 0) {
+    if (props['vaccineSlotAPIResponse'] === undefined || props['vaccineSlotAPIResponse'] === null || props['vaccineSlotAPIResponse']['centers'].length === 0) {
         return " ";
     }
     else {

@@ -1,7 +1,7 @@
 import './App.css';
 import Output from './components/Output/Output'
 import Input from './components/Input/Input'
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function App() {
   const [vaccineSlotAPIResponse, setVaccineSlotAPIResponse] = useState(null);

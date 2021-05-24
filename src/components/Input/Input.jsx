@@ -1,5 +1,5 @@
 import districtList from './districtList.js';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function getFormattedDateHelper(inputDay) {
     let todayTime = new Date();
@@ -106,8 +106,10 @@ function Input(props) {
                     let filteredResponse = filterResponse(response);
 
                     //No need to write custom logic to prevent multiple calls of this function(which will happen once per each week's data fetched), since API endpoint is configured to return status 400 for multiple calls in less than 3 minutes
-                    if (phone != 0)
+                    phone=parseInt(phone);
+                    if (phone !== 0) {
                         notifyViaOTP(phone);
+                    }
                     props.setVaccineSlotAPIResponse(filteredResponse);
                 });
         }
@@ -115,37 +117,33 @@ function Input(props) {
 
     // 3. When 'check availability' Button is clicked, call API to fetch vaccine availability
     function handleCheckAvlBtnClick() {
-        const checkAvlBtn = document.querySelector('#check-avl');
-        checkAvlBtn.addEventListener('click', function () {
-            let districtId = document.querySelector('#district-select').value;
-            let numberOfWeeks = document.querySelector('#weeks').value;
-            let phone = document.querySelector('#phone').value;
-            fetchAvailabilityDetailsAndAlertUser(districtId, numberOfWeeks, phone);
-        });
+        let districtId = document.querySelector('#district-select').value;
+        let numberOfWeeks = document.querySelector('#weeks').value;
+        let phone = document.querySelector('#phone').value;
+        fetchAvailabilityDetailsAndAlertUser(districtId, numberOfWeeks, phone);
     }
 
     useEffect(function () {
         populateDistricts();
         validateWeeks();
-        handleCheckAvlBtnClick();
     }, []);
 
     return (
         <section id='input-section'>
             <h2>Enter details</h2>
             <p>REMARK: Provide secondary phone number, since you will have to wait for 3 mins after OTP notification, to receive the next OTP for login</p>
-            <label for="district-select">Select your district</label>
+            <label htmlFor="district-select">Select your district</label>
             <select id="district-select"></select>
-            <label for="weeks">Enter number of weeks(starting from today) to search for</label>
+            <label htmlFor="weeks">Enter number of weeks(starting from today) to search for</label>
             <input type="number" id="weeks" min="1" defaultValue="1"></input>
-            <label for="phone">Enter phone number for notification(Use '0' if not required)</label>
-            <input type="number" id="phone" value="0"></input>
-            <label for="age">Enter age group</label>
-            <select id="age">
+            <label htmlFor="phone">Enter phone number for notification(Use '0' if not required)</label>
+            <input type="number" id="phone" defaultValue="0"></input>
+            <label htmlFor="age">Enter age group</label>
+            <select id="age" defaultValue="45">
                 <option value="18">18-45</option>
-                <option value="45" selected>45+</option>
+                <option value="45">45+</option>
             </select>
-            <button id="check-avl">Check Availability</button>
+            <button id="check-avl" onClick={handleCheckAvlBtnClick}>Check Availability</button>
         </section>
     );
 }
