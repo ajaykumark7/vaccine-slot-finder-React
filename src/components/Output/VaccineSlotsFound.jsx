@@ -11,6 +11,9 @@ function VaccineSlotsFound(props) {
                 {(props['vaccineSlotAPIResponse']['centers'].forEach((center) => {
                     center['sessions'].forEach((session) => {
                         <VaccineSession centerDetails={center} sessionDetails={session} />
+                        //CODE BELOW WORKS, BUT INSIDE VACCINESESSION IT DOESNT DISPLAY!
+                        console.log(center);
+                        console.log(session);
                     })
 
                 }))}
