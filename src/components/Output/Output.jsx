@@ -1,5 +1,6 @@
 import NoVaccineSlotsFound from "./NoVaccineSlotsFound";
 import VaccineSlotsFound from "./VaccineSlotsFound";
+import { connect } from 'react-redux';
 
 function Output(props) {
     if (props['vaccineSlotAPIResponse'] === undefined || props['vaccineSlotAPIResponse'] === null || props['vaccineSlotAPIResponse']['centers'].length === 0) {
@@ -10,4 +11,8 @@ function Output(props) {
     }
 }
 
-export default Output;
+const mapStateToProps = (state) => ({
+    vaccineSlotAPIResponse: state.vaccineSlotAPIResponse
+});
+
+export default connect(mapStateToProps)(Output);

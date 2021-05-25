@@ -1,5 +1,6 @@
 import districtList from './districtList.js';
 import { useEffect } from "react";
+import { connect } from 'react-redux';
 
 function getFormattedDateHelper(inputDay) {
     let todayTime = new Date();
@@ -106,11 +107,14 @@ function Input(props) {
                     let filteredResponse = filterResponse(response);
 
                     //No need to write custom logic to prevent multiple calls of this function(which will happen once per each week's data fetched), since API endpoint is configured to return status 400 for multiple calls in less than 3 minutes
-                    phone=parseInt(phone);
+                    phone = parseInt(phone);
                     if (phone !== 0) {
                         notifyViaOTP(phone);
                     }
-                    props.setVaccineSlotAPIResponse(filteredResponse);
+                    props.dispatch({
+                        type: "UPDATEVACCINESLOTAPIRESPONSE",
+                        vaccineSlotAPIResponse: filteredResponse
+                    });
                 });
         }
     }
@@ -148,4 +152,8 @@ function Input(props) {
     );
 }
 
-export default Input;
+// const mapStateToProps = (state) => ({
+//     vaccineSlotAPIResponse: state.vaccineSlotAPIResponse
+// });
+
+export default connect()(Input);
