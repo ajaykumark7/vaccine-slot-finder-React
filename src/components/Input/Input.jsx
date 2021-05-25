@@ -137,7 +137,7 @@ function Input(props) {
             <label htmlFor="weeks">Enter number of weeks(starting from today) to search for</label>
             <input type="number" id="weeks" min="1" defaultValue="1"></input>
             <label htmlFor="phone">Enter phone number for notification(Use '0' if not required)</label>
-            <input type="number" id="phone" defaultValue="0"></input>
+            <input type="text" id="phone" defaultValue="0"></input>
             <label htmlFor="age">Enter age group</label>
             <select id="age" defaultValue="45">
                 <option value="18">18-45</option>
