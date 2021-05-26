@@ -35,30 +35,19 @@ function filterResponse(response) {
 
     let filteredResponse = {};
 
-    // filteredResponse['centers'] = response['centers'].filter(center => {
-    //     for (let sessionIndex = 0; sessionIndex < center['sessions'].length; sessionIndex++) {
-    //         //filter centers by vaccine availability(in any session)
-    //         if (center['sessions'][sessionIndex].available_capacity > 0) {
-    //             //filter centers by age group allowed(YES or NO)
-    //             if (center['sessions'][sessionIndex].min_age_limit <= document.querySelector('#age').value) {
-    //                 return center;
-    //             }
-    //         }
-    //     }
-    // });
+    filteredResponse['centers'] = response['centers'].filter(center => {
+        for (let sessionIndex = 0; sessionIndex < center['sessions'].length; sessionIndex++) {
+            //filter centers by vaccine availability(in any session)
+            if (center['sessions'][sessionIndex].available_capacity > 0) {
+                //filter centers by age group allowed(YES or NO)
+                if (center['sessions'][sessionIndex].min_age_limit <= document.querySelector('#age').value) {
+                    return center;
+                }
+            }
+        }
+    });
 
-    // //filter only those sessions which have vaccine availability(A center could have multiple sessions, but only one with vaccines available)
-    // for (let centerCount = 0; centerCount < filteredResponse['centers'].length; centerCount++) {
-    //     filteredResponse['centers'][centerCount] = filteredResponse['centers'][centerCount].filter(sessions => {
-    //         sessions.forEach(function (session) {
-    //             if (session['available_capacity'] > 0)
-    //                 return session;
-    //         })
-    //     })
-    // }
-
-    // return filteredResponse;
-    return response;
+    return filteredResponse;
 }
 
 
