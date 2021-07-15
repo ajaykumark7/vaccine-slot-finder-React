@@ -5,13 +5,21 @@ import React from "react";
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'
 import reducer from './store/reducer'
+import Navbar from 'react-bootstrap/Navbar';
 
 const store = createStore(reducer);
-
+const styles = {
+  navbar: {
+      maxWidth:"720px",
+      justifyContent:"space-evenly !important"
+  }
+}
 function App() {
   return (
     <main>
-      <h1>Find & notify Corona vaccine availability</h1>
+      <Navbar bg="primary" variant="dark">
+        <Navbar.Brand href="#home">Kerala COVID-19 Vaccine Slot Finder</Navbar.Brand>
+      </Navbar>
       <Provider store={store}>
         <Input></Input>
         <Output></Output>

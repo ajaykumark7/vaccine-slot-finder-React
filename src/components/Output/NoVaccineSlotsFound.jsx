@@ -1,7 +1,7 @@
 function NoVaccineSlotsFound(props) {
     return (
         <section id='output-section'>
-            <h2>No vaccine slots currently available</h2>
+            <h4>0 sessions found!</h4>
         </section>
     );
 }

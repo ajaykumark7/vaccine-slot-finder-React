@@ -1,13 +1,13 @@
+import SimpleCard from './SimpleCard';
 import VaccineSession from './VaccineSession'
 
 function VaccineSlotsFound(props) {
     return (
         <section id='output-section'>
-            <h2>Vaccine availability details</h2>
-            {(props['vaccineSlotAPIResponse']['centers'].map((center) => (
-                center['sessions'].map((session) => (
-                    <VaccineSession centerDetails={center} sessionDetails={session} />
-                ))
+            <h4>{props['vaccineSlotAPIResponse']['sessions'].length} sessions found</h4>
+            {(props['vaccineSlotAPIResponse']['sessions'].map((session) => (
+                    // <VaccineSession centerDetails={center} sessionDetails={session} />
+                    <SimpleCard sessionDetails={session} />
 
             )))}
         </section>

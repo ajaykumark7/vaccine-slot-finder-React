@@ -2,6 +2,7 @@
   margin-right: auto;
   margin-left: auto;
   max-width: 720px;
+  padding:20px
 }
 
 label,select,input {
@@ -21,4 +22,13 @@ tfoot {
 
 select,input,button {
   margin: 2px 0px;
+}
+
+h4 {
+  text-align: center;
+  padding:20px
+}
+
+.navbar-expand {
+  justify-content: space-evenly !important;
 }
