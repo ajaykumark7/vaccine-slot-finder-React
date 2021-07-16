@@ -11,7 +11,7 @@ export default function SimpleCard(props) {
             style={{ maxWidth: '720px' }}
             className="mb-2"
         >
-            {/* <Card.Header>{props['sessionDetails']['date']}</Card.Header> */}
+            <Card.Header>{props['sessionDetails']['date']}</Card.Header>
             <Card.Body style={{
                 backgroundColor: '#0069d9'
             }}>
@@ -20,6 +20,8 @@ export default function SimpleCard(props) {
                     Minimum age limit: {props['sessionDetails']['min_age_limit']} 
                     <br></br>
                     Number of vaccines available: {props['sessionDetails']['available_capacity']}
+                    <br></br>
+                    Vaccine brand: {props['sessionDetails']['vaccine']}
                 </Card.Text>
             </Card.Body>
         </Card>
