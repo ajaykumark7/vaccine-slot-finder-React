@@ -33,17 +33,23 @@ function Input(props) {
 
     function filterResponse(response) {
         let filteredResponse = {};
-        filteredResponse['sessions'] = response['centers'].filter(center => {
+        filteredResponse['sessions'] = response['centers'].map(center => {
             for (let sessionIndex = 0; sessionIndex < center['sessions'].length; sessionIndex++) {
                 //filter centers by vaccine availability(in any session)
                 if (center['sessions'][sessionIndex].available_capacity > 0) {
                     //filter centers by age group allowed(YES or NO)
                     if (center['sessions'][sessionIndex].min_age_limit <= age) {
-                        return center;
+                        return {
+                            min_age_limit: center['sessions'][sessionIndex].min_age_limit,
+                            available_capacity: center['sessions'][sessionIndex].available_capacity,
+                            name: center['name']
+                        }
                     }
                 }
             }
         });
+        filteredResponse['sessions'] = filteredResponse['sessions'].filter(element => element != undefined)
+        console.log(filteredResponse['sessions']);
         return filteredResponse;
     }
 

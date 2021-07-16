@@ -1,12 +1,9 @@
-// import './SimpleCard.css';
-
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function SimpleCard(props) {
-// console.log(props['sessionDetails']);
     return (
         <Card
             bg="info"
@@ -15,7 +12,9 @@ export default function SimpleCard(props) {
             className="mb-2"
         >
             {/* <Card.Header>{props['sessionDetails']['date']}</Card.Header> */}
-            <Card.Body>
+            <Card.Body style={{
+                backgroundColor: '#0069d9'
+            }}>
                 <Card.Title>{props['sessionDetails']['name']} </Card.Title>
                 <Card.Text>
                     Minimum age limit: {props['sessionDetails']['min_age_limit']} 
