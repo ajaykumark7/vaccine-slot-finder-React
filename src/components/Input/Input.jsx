@@ -43,7 +43,8 @@ function Input(props) {
                             min_age_limit: center['sessions'][sessionIndex].min_age_limit,
                             available_capacity: center['sessions'][sessionIndex].available_capacity,
                             name: center['name'],
-                            vaccine: center['sessions'][sessionIndex].vaccine
+                            vaccine: center['sessions'][sessionIndex].vaccine,
+                            date: center['sessions'][sessionIndex].date
                         }
                     }
                 }
