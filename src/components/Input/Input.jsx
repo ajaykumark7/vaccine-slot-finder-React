@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Input(props) {
     const [district, setDistrict] = useState(null);
-    const [weeks, setWeeks] = useState("1");
-    const [phone, setPhone] = useState("0");
     const [age, setAge] = useState("45");
 
     function getFormattedDateHelper(inputDay) {
@@ -51,7 +49,6 @@ function Input(props) {
             }
         });
         filteredResponse['sessions'] = filteredResponse['sessions'].filter(element => element != undefined)
-        console.log(filteredResponse['sessions']);
         return filteredResponse;
     }
 
@@ -63,25 +60,6 @@ function Input(props) {
         fetch(endpoint)
             .then(response => response.json())
             .then(function (response) {
-                function notifyViaOTP(phone) {
-                    let OTPRequestBody = {
-                        mobile: phone
-                    }
-                    const endpoint = 'https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP';
-                    fetch(endpoint, {
-                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                        mode: 'cors', // no-cors, *cors, same-origin
-                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                        credentials: 'same-origin', // include, *same-origin, omit
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        redirect: 'follow', // manual, *follow, error
-                        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                        body: JSON.stringify(OTPRequestBody)
-                    })
-                }
-
                 //filter response according to age, availability of vaccine etc
                 let filteredResponse = filterResponse(response);
                 props.dispatch({
