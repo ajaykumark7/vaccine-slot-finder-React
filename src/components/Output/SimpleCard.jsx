@@ -1,9 +1,13 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button'
 
 
 export default function SimpleCard(props) {
+    let handleSlotBookBtnClick = () => {
+        window.open('https://selfregistration.cowin.gov.in/', '_blank');
+    }
     return (
         <Card
             bg="info"
@@ -16,7 +20,7 @@ export default function SimpleCard(props) {
             }}>{props['sessionDetails']['date']}</Card.Header>
             <Card.Body style={{
                 backgroundColor: '#0069d9',
-                color:'white'
+                color: 'white'
             }}>
                 <Card.Title>{props['sessionDetails']['name']} </Card.Title>
                 <Card.Text>
@@ -26,6 +30,7 @@ export default function SimpleCard(props) {
                     <br></br>
                     Vaccine brand: {props['sessionDetails']['vaccine']}
                 </Card.Text>
+                <Button variant="light" onClick={handleSlotBookBtnClick}>Book a slot</Button>
             </Card.Body>
         </Card>
 
