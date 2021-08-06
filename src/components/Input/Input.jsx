@@ -40,6 +40,8 @@ function Input(props) {
                         return {
                             min_age_limit: center['sessions'][sessionIndex].min_age_limit,
                             available_capacity: center['sessions'][sessionIndex].available_capacity,
+                            available_capacity_dose1: center['sessions'][sessionIndex].available_capacity_dose1,
+                            available_capacity_dose2: center['sessions'][sessionIndex].available_capacity_dose2,
                             name: center['name'],
                             vaccine: center['sessions'][sessionIndex].vaccine,
                             date: center['sessions'][sessionIndex].date

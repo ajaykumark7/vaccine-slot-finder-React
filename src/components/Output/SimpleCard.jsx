@@ -26,7 +26,9 @@ export default function SimpleCard(props) {
                 <Card.Text>
                     Minimum age limit: {props['sessionDetails']['min_age_limit']}
                     <br></br>
-                    Number of vaccines available: {props['sessionDetails']['available_capacity']}
+                    Number of vaccines available (1st dose): {props['sessionDetails']['available_capacity_dose1']}
+                    <br></br>
+                    Number of vaccines available (2nd dose): {props['sessionDetails']['available_capacity_dose2']}
                     <br></br>
                     Vaccine brand: {props['sessionDetails']['vaccine']}
                 </Card.Text>
