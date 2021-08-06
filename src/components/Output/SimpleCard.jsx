@@ -24,6 +24,8 @@ export default function SimpleCard(props) {
             }}>
                 <Card.Title>{props['sessionDetails']['name']} </Card.Title>
                 <Card.Text>
+                    Address: {props['sessionDetails']['address']}
+                    <br></br>
                     Minimum age limit: {props['sessionDetails']['min_age_limit']}
                     <br></br>
                     Dose 1 slots: {props['sessionDetails']['available_capacity_dose1']}

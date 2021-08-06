@@ -38,6 +38,7 @@ function Input(props) {
                     //filter centers by age group allowed(YES or NO)
                     if (center['sessions'][sessionIndex].min_age_limit <= age) {
                         return {
+                            address: center['address'],
                             min_age_limit: center['sessions'][sessionIndex].min_age_limit,
                             available_capacity: center['sessions'][sessionIndex].available_capacity,
                             available_capacity_dose1: center['sessions'][sessionIndex].available_capacity_dose1,
